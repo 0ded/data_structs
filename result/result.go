@@ -19,22 +19,22 @@ func Err[T any](err error) Result[T] {
 }
 
 // IsOk checks if the Result is successful.
-func (r Result[T]) IsOk() bool {
+func (r *Result[T]) IsOk() bool {
 	return r.err == nil
 }
 
 // Value retrieves the value if it's successful, otherwise returns the zero value.
-func (r Result[T]) Value() T {
+func (r *Result[T]) Value() T {
 	return r.value
 }
 
 // Error retrieves the error message if there's an error.
-func (r Result[T]) Error() error {
+func (r *Result[T]) Error() error {
 	return r.err
 }
 
 // Returns
-func (r Result[T]) Unwrap() (T, error) {
+func (r *Result[T]) Unwrap() (T, error) {
 	if r.IsOk() {
 		return r.value, nil
 	}
@@ -42,7 +42,7 @@ func (r Result[T]) Unwrap() (T, error) {
 }
 
 // String provides a string representation of the Result.
-func (r Result[T]) String() string {
+func (r *Result[T]) String() string {
 	if r.IsOk() {
 		return fmt.Sprintf("Ok(%v)", r.value)
 	}
