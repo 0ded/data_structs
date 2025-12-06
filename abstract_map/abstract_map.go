@@ -1,10 +1,11 @@
 package abstract_map
 
 import (
-	"data_structs/result"
+	. "data_structs/result"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/0ded/data_structs/result"
 )
 
 // AbstractMap struct represents a map that can hold different value types.
